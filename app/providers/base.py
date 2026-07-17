@@ -10,7 +10,7 @@ class BaseProvider(ABC):
         Send a prompt to the provider.
         Returns the model response.
         """
-        pass
+        raise NotImplementedError
 
     async def health_check(self) -> bool:
         return True

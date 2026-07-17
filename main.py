@@ -1,14 +1,24 @@
 import asyncio
 
-from app.providers.gemini import GeminiProvider
+from app.router.router import AIRouter
 
 
 async def main():
-    ai = GeminiProvider()
 
-    answer = await ai.chat("Say hello in one sentence.")
+    router = AIRouter()
 
-    print("\nGemini replied:\n")
+    provider = input(
+        "Choose provider (gemini/openrouter): "
+    ).strip().lower()
+
+    prompt = input("You: ")
+
+    answer = await router.chat(
+        prompt=prompt,
+        provider=provider,
+    )
+
+    print("\nAssistant:\n")
     print(answer)
 
 
